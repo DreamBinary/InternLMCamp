@@ -1,7 +1,9 @@
 # InternLM WORK
 
-[TOC]
-
+[300 字的小故事](##300 字的小故事)
+[Hugging face 下载](##Hugging face 下载)
+[浦语·灵笔部署](##浦语·灵笔部署)
+[Lagent使用](##Lagent使用)
 
 
 
