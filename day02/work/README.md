@@ -68,11 +68,19 @@ robot这里直接给了段英文小故事，风格和上面也有所不同
 
 
 
+直接使用下载会产生以下错误：
+
 ```
 requests.exceptions.ProxyError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /internlm/internlm-7b/resolve/main/config.json (Caused by ProxyError('Cannot connect to proxy.', TimeoutError('timed out')))"), '(Request ID: bf763041-1f85-4570-9844-3a1911faffb2)')
 ```
 
+改用镜像站下载：
 
+```python
+HF_ENDPOINT=https://hf-mirror.com python download.py
+```
+
+结果如下：
 
 ![image-20240106222042377](README.assets/image-20240106222042377.png)
 
