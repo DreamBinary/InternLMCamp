@@ -1,6 +1,6 @@
 # InternLM & LangChain
 
-### 复现教程
+### 
 
 **1 环境配置**
 

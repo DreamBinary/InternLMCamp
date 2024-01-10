@@ -44,17 +44,17 @@
 
 - 数据库下载
 
-```bash
-cd /root/data
-git clone https://gitee.com/open-compass/opencompass.git
-git clone https://gitee.com/InternLM/lmdeploy.git
-git clone https://gitee.com/InternLM/xtuner.git
-git clone https://gitee.com/InternLM/InternLM-XComposer.git
-git clone https://gitee.com/InternLM/lagent.git
-git clone https://gitee.com/InternLM/InternLM.git
-```
+  ```bash
+  cd /root/data
+  git clone https://gitee.com/open-compass/opencompass.git
+  git clone https://gitee.com/InternLM/lmdeploy.git
+  git clone https://gitee.com/InternLM/xtuner.git
+  git clone https://gitee.com/InternLM/InternLM-XComposer.git
+  git clone https://gitee.com/InternLM/lagent.git
+  git clone https://gitee.com/InternLM/InternLM.git
+  ```
 
-![image-20240110211512235](README.assets/image-20240110211512235.png)
+  ![image-20240110211512235](README.assets/image-20240110211512235.png)
 
 - 选用上述仓库中所有的 markdown、txt 文件作为示例语料库
 
@@ -185,10 +185,6 @@ git clone https://gitee.com/InternLM/InternLM.git
       def _llm_type(self) -> str:
           return "InternLM"
   ```
-
-
-
-  
 
 **4 构建检索问答链**
 
