@@ -82,7 +82,7 @@ git clone https://gitee.com/InternLM/InternLM.git
   使用 `LangChain` 提供的 `FileLoader` 对象来加载目标文件，得到由目标文件解析出的纯文本内容
 
   在上面代码后面加上下面代码:
-  
+
   ```python
   from tqdm import tqdm
   from langchain.document_loaders import UnstructuredFileLoader
@@ -102,46 +102,45 @@ git clone https://gitee.com/InternLM/InternLM.git
           docs.extend(loader.load())
       return docs
   ```
-```
-  
+
 - 构建向量数据库
 
   使用`LangChain`来分割字符串:
 
   ```python
-  from langchain.text_splitter import RecursiveCharacterTextSplitter
-  
-  text_splitter = RecursiveCharacterTextSplitter(
-      chunk_size=500, chunk_overlap=150)
-  split_docs = text_splitter.split_documents(docs)
-```
-
-  对`Sentence Transformer`进行文本向量化:
-
-  ```python
-  from langchain.embeddings.huggingface import HuggingFaceEmbeddings
-  
-  embeddings = HuggingFaceEmbeddings(model_name="/root/data/model/sentence-transformer")
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+    
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500, chunk_overlap=150)
+    split_docs = text_splitter.split_documents(docs)
   ```
 
-  选择 Chroma 作为向量数据库:
+    对`Sentence Transformer`进行文本向量化:
 
   ```python
-  from langchain.vectorstores import Chroma
-  
-  # 定义持久化路径
-  persist_directory = 'data_base/vector_db/chroma'
-  # 加载数据库
-  vectordb = Chroma.from_documents(
-      documents=split_docs,
-      embedding=embeddings,
-      persist_directory=persist_directory  # 允许我们将persist_directory目录保存到磁盘上
-  )
-  # 将加载的向量数据库持久化到磁盘上
-  vectordb.persist()
+    from langchain.embeddings.huggingface import HuggingFaceEmbeddings
+    
+    embeddings = HuggingFaceEmbeddings(model_name="/root/data/model/sentence-transformer")
   ```
 
-  整合上面代码搭建知识库
+    选择 Chroma 作为向量数据库:
+
+  ```python
+    from langchain.vectorstores import Chroma
+    
+    # 定义持久化路径
+    persist_directory = 'data_base/vector_db/chroma'
+    # 加载数据库
+    vectordb = Chroma.from_documents(
+        documents=split_docs,
+        embedding=embeddings,
+        persist_directory=persist_directory  # 允许我们将persist_directory目录保存到磁盘上
+    )
+    # 将加载的向量数据库持久化到磁盘上
+    vectordb.persist()
+  ```
+
+    整合上面代码搭建知识库
 
 **3 InternLM 接入 LangChain**
 
@@ -354,3 +353,28 @@ demo.launch()
 ![image-20240110223032038](README.assets/image-20240110223032038.png)
 
 ### 搭建专业问答助手
+
+- 使用`OpenXLab`的[`法律法规数据库`](https://openxlab.org.cn/datasets/ABear/Legal_Legislation/tree/main)
+
+  **数据实例**
+
+  ```json
+  {
+      "id": "BkdePxI5qU2D7DgIkr6Q",
+      "content": "---\nbookHidden: true\n---\n# 某条法律的标题 <!-- 比如中华人民共和国民法典 -->\n# 副标题 <!-- 当拆分法律的时候，比如民法典， 会拆除不同的篇，那这里可以放 人格权编 -->\n1990年01月23日 发生了什么事情 <!-- 时间<空格>事件 -->\n2021年11月1日 施行\n<!-- 第五行是必须填写的，除此之外的备注可以在正文中忽略 -->\n## 第一篇 <!-- 使用 Markdown 的不同数量的 # 区别层级，但在 app 中并不会得到体现 -->\n### 第一节\n第一条 xxxxx\n第二条 xxxxx",
+      "data_type": "markdown",
+      "data_source": "cn-law",
+      "data_url": "",
+      "remark": {
+          "file_path": "raw-data/法律法规模版.md"
+      },
+      "doc_loc": "s3://llm-process-snew/cn-law/clean/v001/part-000000-2ebc1745.jsonl?bytes=1119,1019",
+      "track_loc": [
+          "s3://llm-process-snew/cn-law/format/v001/part-000000-a23eabb1.jsonl?bytes=938,866",
+          "s3://llm-process-snew/cn-law/pre-clean/v001/part-000000-1ef28ace.jsonl?bytes=1036,952"
+      ]
+  }
+  ```
+
+  
+
