@@ -416,4 +416,7 @@ demo.launch()
 - 创建应用
 
   ![image-20240111120846205](README.assets/image-20240111120846205.png)
+  
+- 日志
 
+  ![image-20240111141902583](README.assets/image-20240111141902583.png)
