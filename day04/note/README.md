@@ -1,7 +1,7 @@
 # XTuner
 
 - [课程笔记](#课程笔记)
-- [`XTuner`实战](#`XTuner`实战)
+- [`XTuner`实战](#XTuner实战)
 
 ### 课程笔记
 
