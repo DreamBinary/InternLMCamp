@@ -372,12 +372,48 @@ demo.launch()
   }
   ```
 
-  
 
+- 上传目标修改目标文件夹
 
+  ![image-20240111115827940](README.assets/image-20240111115827940.png)
+
+- 在`InternStudio`运行
 
 ![image-20240110235208315](README.assets/image-20240110235208315.png)
 
+- 查看数据来源
 
+  ![image-20240110235228181](README.assets/image-20240110235228181.png)
 
-![image-20240110235228181](README.assets/image-20240110235228181.png)
+- 在`OpenXLab`选择`Gradio`创建应用
+
+  <img src="README.assets/image-20240111120216184.png" alt="image-20240111120216184" style="zoom:50%;" />
+
+- 创建一个仓库[DreamBinary/LegalChat (github.com)](https://github.com/DreamBinary/LegalChat)
+
+  将刚才的`download.py` `my_llm.py` `get_file.py` 等等文件都放在里面
+
+- 在`requierments.txt`文件中添加以下依赖
+
+  ```python
+  modelscope==1.9.5
+  transformers==4.35.2
+  streamlit==1.24.0
+  sentencepiece==0.1.99
+  accelerate==0.24.1
+  langchain==0.0.292
+  gradio==4.4.0
+  chromadb==0.4.15
+  sentence-transformers==2.2.2
+  unstructured==0.10.30
+  markdown==3.3.7
+  pysqlite3-binary
+  huggingface_hub
+  ```
+
+  `pysqlite3-binary`用来应对`OpenXLab`y运行应用时 `sqlite3 >= 3.35.0`的报错
+
+- 创建应用
+
+  ![image-20240111120846205](README.assets/image-20240111120846205.png)
+
