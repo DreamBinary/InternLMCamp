@@ -539,6 +539,6 @@
   ![image-20240111190546783](README.assets/image-20240111190546783.png)
 
   这里`Killed`可能是因为配置不够高
-
-
+  
+- 应用链接 [DreamBinaryAssistant](https://openxlab.org.cn/apps/detail/fiv/DreamBinaryAssistant)
 
