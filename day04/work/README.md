@@ -497,9 +497,13 @@
 
 ### 应用部署`OpenXLab`
 
-- 复制上面的`web_demo.py`到`app.py`
+- 在`OpenXLab`中上传`InternStudio`中的`Merge模型`
 
-  ![image-20240111190651573](README.assets/image-20240111190651573.png)
+- 在`OpenXLab`中选择创建`Gradio`应用，选择启动文件为`start.py`,链接到自己的[仓库](https://github.com/DreamBinary/DreamBinaryAssistant/tree/master)
+
+- 复制上面的`web_demo.py`到`app.py`，修改模型的路径
+
+  <img src="README.assets/image-20240111192748196.png" alt="image-20240111192748196" style="zoom:67%;" />
 
 - 在`start.py`中运行`run.sh`命令
 
