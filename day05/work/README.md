@@ -2,7 +2,7 @@
 
 - [300 字小故事](#TurboMind+Python-生成-300-字小故事)
 
-- [Internlm-chat-7b KV Cache 量化](#Internlm-chat-7b-KV-Cache 量化)
+- [Internlm-chat-7b KV Cache 量化](#Internlm-chat-7b-KV-Cache-量化)
 
 ### TurboMind+Python 生成 300 字小故事
 
