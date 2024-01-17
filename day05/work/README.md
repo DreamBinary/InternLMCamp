@@ -35,24 +35,45 @@ print(response)
 
 ### Internlm-chat-7b KV Cache 量化
 
+- **转成 turbomind**
+
+  ```bash
+  lmdeploy convert internlm-chat-7b /share/temp/model_repos/internlm-chat-7b
+  ```
+  
 - **计算 minmax**
 
   ```bash
+  # 更换镜像站
+  export HF_ENDPOINT=https://hf-mirror.com
   # 计算 minmax
-  lmdeploy lite calibrate \
-    --model  /root/share/temp/model_repos/internlm-chat-7b/ \
-    --calib_dataset "c4" \
-    --calib_samples 128 \
-    --calib_seqlen 2048 \
+  lmdeploy lite calibrate  \
+  	--model  /root/share/temp/model_repos/internlm-chat-7b/  \
+      --calib_dataset "ptb" \
+      --calib_samples 128 \
+      --calib_seqlen 2048 \
     --work_dir ./quant_output
+  
+```
+  
+  选择 128 条输入样本，每条样本长度为 2048，数据集选择 ptb
+  
+  ![image-20240117225403760](README.assets/image-20240117225403760.png)
+  
+- 通过 minmax 获取量化参数
+
+  ```bash
+  # 通过 minmax 获取量化参数
+  mkdir workspace/triton_models/weights
+  lmdeploy lite kv_qparams \
+    --work_dir ./quant_output  \
+    --turbomind_dir workspace/triton_models/weights/ \
+    --kv_sym False \
+    --num_tp 1
   ```
 
-  选择 128 条输入样本，每条样本长度为 2048，数据集选择 C4
+  ![image-20240117230654640](README.assets/image-20240117230654640.png)
 
-  > 这一步由于默认需要从 Huggingface 下载数据集，国内经常不成功。所以我们导出了需要的数据，大家需要对读取数据集的代码文件做一下替换。共包括两步：
-  >
-  > 第一步：复制 `calib_dataloader.py` 到安装目录替换该文件：`cp /root/share/temp/datasets/c4/calib_dataloader.py  /root/.conda/envs/lmdeploy/lib/python3.10/site-packages/lmdeploy/lite/utils/`
-  >
-  > 第二步：将用到的数据集（c4）复制到下面的目录：`cp -r /root/share/temp/datasets/c4/ /root/.cache/huggingface/datasets/`
+- 修改`config.ini`配置
 
-  
+  <img src="README.assets/image-20240117233620146.png" alt="image-20240117233620146" style="zoom:50%;" />
