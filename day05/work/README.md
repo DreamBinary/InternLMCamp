@@ -54,26 +54,28 @@ print(response)
       --calib_seqlen 2048 \
     --work_dir ./quant_output
   
-```
+  ```
   
-  选择 128 条输入样本，每条样本长度为 2048，数据集选择 ptb
+    选择 128 条输入样本，每条样本长度为 2048，数据集选择 ptb
   
-  ![image-20240117225403760](README.assets/image-20240117225403760.png)
+    ![image-20240117225403760](README.assets/image-20240117225403760.png)
   
 - 通过 minmax 获取量化参数
 
   ```bash
-  # 通过 minmax 获取量化参数
-  mkdir workspace/triton_models/weights
   lmdeploy lite kv_qparams \
-    --work_dir ./quant_output  \
-    --turbomind_dir workspace/triton_models/weights/ \
-    --kv_sym False \
-    --num_tp 1
+      --work_dir ./quant_output  \
+      --turbomind_dir workspace/triton_models/weights/ \
+      --kv_sym False \
+      --num_tp 1
   ```
 
-  ![image-20240117230654640](README.assets/image-20240117230654640.png)
-
+    ![image-20240117230654640](README.assets/image-20240117230654640.png)
 - 修改`config.ini`配置
 
   <img src="README.assets/image-20240117233620146.png" alt="image-20240117233620146" style="zoom:50%;" />
+  
+- 量化运行结果
+
+  ![image-20240118111554393](README.assets/image-20240118111554393.png)
+
