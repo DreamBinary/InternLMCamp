@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="ssh.intern-ai.org.cn" id="c463e9c1-8aff-40a3-b670-4313d7454a74" keyPath="$USER_HOME$/.ssh/id_rsa" port="34030" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

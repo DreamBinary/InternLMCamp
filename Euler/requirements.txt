@@ -1,0 +1,3 @@
+xtuner
+lmdeploy
+gradio

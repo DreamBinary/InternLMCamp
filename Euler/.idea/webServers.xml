@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ef3d95c4-f764-4812-abf7-a6ad95f768ee" name="Intern">
+        <fileTransfer accessType="SFTP" host="ssh.intern-ai.org.cn" port="34030" sshConfigId="c463e9c1-8aff-40a3-b670-4313d7454a74" sshConfig="root@ssh.intern-ai.org.cn:34030 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
